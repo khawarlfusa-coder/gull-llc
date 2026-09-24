@@ -1,0 +1,43 @@
+{
+  "company": {
+    "name": "GUL LLC",
+    "tagline": "Quality You Can Trust – Premium Home & Living",
+    "address": "1209 North Orange Street, Suite 400, Wilmington, DE 19801, United States",
+    "phone": "+1 (302) 415-3882",
+    "email": "support@gulllc.com",
+    "ein": "Authorized US LLC",
+    "hours": "Mon - Fri: 9:00 AM - 6:00 PM EST | Sat: 10:00 AM - 3:00 PM EST"
+  },
+  "payment": {
+    "cod": {
+      "enabled": true,
+      "label": "Cash on Delivery (COD)",
+      "description": "Pay with cash or certified funds upon order arrival."
+    },
+    "paypal": {
+      "enabled": true,
+      "label": "PayPal / Pay in 4",
+      "mode": "sandbox",
+      "clientId": "test_client_id_paypal_gul_llc",
+      "currency": "USD"
+    },
+    "twoCheckout": {
+      "enabled": true,
+      "label": "2Checkout / Credit & Debit Card",
+      "merchantCode": "250819402",
+      "publishableKey": "pk_2co_demo_live_gulllc"
+    },
+    "ach": {
+      "enabled": true,
+      "label": "ACH Direct Debit / US Bank Transfer",
+      "provider": "stripe_dwolla",
+      "bankName": "JPMorgan Chase Bank, N.A.",
+      "accountHolder": "GUL LLC",
+      "routingNumber": "021000021",
+      "accountType": "Checking",
+      "stripePublishableKey": "pk_test_sample_ach_gulllc",
+      "stripeSecretKey": "sk_test_sample_ach_gulllc",
+      "instructions": "Direct bank debit processed securely via Federal Reserve ACH Network (1-3 business days clearing)."
+    }
+  }
+}

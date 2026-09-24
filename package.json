@@ -1,0 +1,26 @@
+{
+  "name": "gul-llc-storefront",
+  "version": "1.0.0",
+  "description": "GUL LLC - Official Walmart Approved Premium eCommerce Storefront",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "keywords": [
+    "ecommerce",
+    "walmart-approval",
+    "gul-llc",
+    "shop",
+    "ach",
+    "paypal",
+    "2checkout",
+    "cod"
+  ],
+  "author": "GUL LLC",
+  "license": "ISC"
+}

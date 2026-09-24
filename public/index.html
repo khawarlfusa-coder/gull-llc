@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUL LLC – Quality You Can Trust | Official Storefront</title>
+  <meta name="description" content="GUL LLC offers premium home decor, modern lighting, living room furniture, organizers, and luxury home fragrances with fast US shipping and 30-day returns.">
+  <meta name="author" content="GUL LLC">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Tailwind Custom Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f172a',
+              slate: '#1e293b',
+              gold: '#d97706',
+              goldDark: '#b45309',
+              goldLight: '#fef3c7'
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased flex flex-col min-h-screen">
+
+  <!-- 1. TOP ANNOUNCEMENT BAR (Matching rmventures style) -->
+  <div class="top-bar py-2 px-4 text-center text-xs flex flex-wrap items-center justify-between border-b border-slate-800">
+    <div class="hidden md:flex items-center space-x-4">
+      <span><i class="fas fa-certificate text-amber-400 mr-1.5"></i> Authorized US LLC &bull; Walmart Marketplace Verified</span>
+      <span><i class="fas fa-truck text-emerald-400 mr-1.5"></i> Fast & Extended 30-Day Returns</span>
+    </div>
+    <div class="mx-auto md:mx-0 font-medium text-slate-200">
+      Use Coupon code <span class="bg-amber-500/20 text-amber-300 px-2 py-0.5 rounded font-mono font-bold">WELCOME25</span> for up to 20% off!
+    </div>
+    <div class="hidden lg:flex items-center space-x-4 text-slate-300">
+      <a href="#track-order" onclick="App.navigateTo('track-order')" class="hover:text-amber-400 transition"><i class="fas fa-map-marker-alt mr-1"></i> Track Order</a>
+      <span class="text-slate-600">|</span>
+      <a href="#contact" onclick="App.navigateTo('contact')" class="hover:text-amber-400 transition"><i class="fas fa-phone mr-1"></i> +1 (302) 415-3882</a>
+    </div>
+  </div>
+
+  <!-- 2. MAIN HEADER -->
+  <header class="bg-white sticky top-0 z-40 header-shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Logo -->
+        <div class="flex items-center space-x-3">
+          <button id="mobileMenuBtn" class="lg:hidden text-slate-700 hover:text-amber-600 p-2 text-xl" onclick="document.getElementById('mobileNavDrawer').classList.toggle('hidden')">
+            <i class="fas fa-bars"></i>
+          </button>
+          <a href="#home" onclick="App.navigateTo('home')" class="flex flex-col">
+            <div class="flex items-center space-x-2">
+              <div class="w-10 h-10 rounded-xl bg-slate-900 flex items-center justify-center text-amber-500 shadow-md">
+                <i class="fas fa-gem text-lg"></i>
+              </div>
+              <div>
+                <span class="text-2xl font-extrabold tracking-tight text-slate-900 font-serif">GUL <span class="text-amber-600">LLC</span></span>
+                <span class="block text-[10px] uppercase tracking-widest text-slate-500 font-semibold -mt-1">Quality You Can Trust</span>
+              </div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Search Bar (Desktop) -->
+        <div class="hidden md:flex flex-1 max-w-lg mx-8">
+          <div class="relative w-full">
+            <input type="text" placeholder="Search furniture, lighting, organizers, decor..." class="header-search-input w-full pl-10 pr-24 py-2.5 bg-slate-100 border border-slate-200 rounded-full text-xs focus:outline-none focus:border-amber-600 focus:bg-white transition text-slate-800">
+            <i class="fas fa-search absolute left-3.5 top-3 text-slate-400 text-xs"></i>
+            <button onclick="App.navigateTo('shop')" class="absolute right-1 top-1 bottom-1 px-4 bg-amber-600 hover:bg-amber-700 text-white rounded-full text-xs font-bold transition">
+              Search
+            </button>
+          </div>
+        </div>
+
+        <!-- Header Actions -->
+        <div class="flex items-center space-x-3 sm:space-x-5">
+          <!-- Track Order Link -->
+          <a href="#track-order" onclick="App.navigateTo('track-order')" class="p-2 text-slate-600 hover:text-amber-600 transition" title="Track Your Order">
+            <i class="fas fa-shipping-fast text-lg"></i>
+          </a>
+
+          <!-- Cart Drawer Trigger -->
+          <button onclick="CartHandler.openDrawer()" class="relative p-2.5 bg-slate-900 hover:bg-amber-600 text-white rounded-xl transition duration-200 flex items-center space-x-2 shadow-sm">
+            <i class="fas fa-shopping-bag text-base"></i>
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 bg-amber-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-extrabold shadow">0</span>
+            <span class="hidden sm:inline text-xs font-bold cart-subtotal-val">$0.00</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Navigation Menu (Desktop) -->
+      <nav class="hidden lg:flex items-center justify-between border-t border-slate-100 py-2.5 text-xs font-semibold text-slate-700">
+        <div class="flex items-center space-x-6">
+          <a href="#home" onclick="App.navigateTo('home')" class="nav-link hover:text-amber-600 transition">HOME</a>
+          <a href="#shop" onclick="App.navigateTo('shop')" class="nav-link hover:text-amber-600 transition">SHOP ALL</a>
+          <button onclick="App.setCategory('home-living'); App.navigateTo('shop')" class="hover:text-amber-600 transition uppercase">Home & Living</button>
+          <button onclick="App.setCategory('home-decor'); App.navigateTo('shop')" class="hover:text-amber-600 transition uppercase">Home Decor</button>
+          <button onclick="App.setCategory('lighting'); App.navigateTo('shop')" class="hover:text-amber-600 transition uppercase">Lighting</button>
+          <button onclick="App.setCategory('organizers'); App.navigateTo('shop')" class="hover:text-amber-600 transition uppercase">Organizers</button>
+          <button onclick="App.setCategory('home-fragrance'); App.navigateTo('shop')" class="hover:text-amber-600 transition uppercase">Home Fragrance</button>
+        </div>
+        <div class="flex items-center space-x-4 text-slate-500 text-xs">
+          <a href="#about" onclick="App.navigateTo('about')" class="nav-link hover:text-amber-600 transition">About GUL LLC</a>
+          <a href="#contact" onclick="App.navigateTo('contact')" class="nav-link hover:text-amber-600 transition">Contact Us</a>
+          <span class="text-amber-600 font-bold"><i class="fas fa-shield-alt"></i> Walmart Ready</span>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile Nav Drawer -->
+    <div id="mobileNavDrawer" class="hidden lg:hidden border-t border-slate-200 bg-white px-4 py-4 space-y-3">
+      <div class="relative w-full mb-3">
+        <input type="text" placeholder="Search store..." class="header-search-input w-full pl-9 pr-3 py-2 bg-slate-100 rounded-lg text-xs">
+        <i class="fas fa-search absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+      </div>
+      <div class="grid grid-cols-2 gap-2 text-xs font-semibold">
+        <a href="#home" onclick="App.navigateTo('home'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="p-2 bg-slate-50 rounded hover:bg-amber-50">Home</a>
+        <a href="#shop" onclick="App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="p-2 bg-slate-50 rounded hover:bg-amber-50">Shop Catalogue</a>
+        <button onclick="App.setCategory('home-living'); App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="text-left p-2 bg-slate-50 rounded hover:bg-amber-50">Home & Living</button>
+        <button onclick="App.setCategory('home-decor'); App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="text-left p-2 bg-slate-50 rounded hover:bg-amber-50">Home Decor</button>
+        <button onclick="App.setCategory('lighting'); App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="text-left p-2 bg-slate-50 rounded hover:bg-amber-50">Lighting</button>
+        <button onclick="App.setCategory('organizers'); App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="text-left p-2 bg-slate-50 rounded hover:bg-amber-50">Organizers</button>
+        <button onclick="App.setCategory('home-fragrance'); App.navigateTo('shop'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="text-left p-2 bg-slate-50 rounded hover:bg-amber-50">Home Fragrance</button>
+        <a href="#track-order" onclick="App.navigateTo('track-order'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="p-2 bg-slate-50 rounded hover:bg-amber-50">Track Order</a>
+        <a href="#about" onclick="App.navigateTo('about'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="p-2 bg-slate-50 rounded hover:bg-amber-50">About Us</a>
+        <a href="#contact" onclick="App.navigateTo('contact'); document.getElementById('mobileNavDrawer').classList.add('hidden')" class="p-2 bg-slate-50 rounded hover:bg-amber-50">Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN CONTENT VIEWS (Single Page Routing) -->
+  <!-- ========================================== -->
+  <main class="flex-grow">
+
+    <!-- VIEW 1: HOME PAGE -->
+    <section id="view-home" class="view-section">
+      
+      <!-- HERO BANNER -->
+      <div class="hero-gradient text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          <div class="space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center space-x-2 bg-amber-500/20 border border-amber-400/30 px-3 py-1.5 rounded-full text-xs font-bold text-amber-300">
+              <i class="fas fa-check-circle"></i>
+              <span>Official US Storefront &bull; GUL LLC</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-serif leading-tight">
+              GUL LLC Everything <br class="hidden sm:inline">
+              <span class="text-amber-400">– On Budget</span>
+            </h1>
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl mx-auto lg:mx-0 leading-relaxed">
+              Where Style Meets Comfort & Luxury Meets Affordability. Premium living room suites, architectural lighting, artisan decor, and curated aromatherapy designed for modern American homes.
+            </p>
+            <div class="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+              <a href="#shop" onclick="App.navigateTo('shop')" class="px-7 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200 shadow-lg shadow-amber-900/30 flex items-center">
+                <span>Browse Catalogue</span>
+                <i class="fas fa-arrow-right ml-2 text-xs"></i>
+              </a>
+              <button onclick="App.setCategory('home-living'); App.navigateTo('shop')" class="px-6 py-3.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200">
+                Explore Items
+              </button>
+            </div>
+            
+            <!-- Quick Feature Ticker -->
+            <div class="pt-6 grid grid-cols-3 gap-4 border-t border-slate-800 text-center lg:text-left text-xs text-slate-300">
+              <div>
+                <p class="text-lg font-bold text-white">100%</p>
+                <p class="text-[11px] text-slate-400">US LLC Verified</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white">3-5 Days</p>
+                <p class="text-[11px] text-slate-400">Domestic Delivery</p>
+              </div>
+              <div>
+                <p class="text-lg font-bold text-white">30 Days</p>
+                <p class="text-[11px] text-slate-400">Hassle-Free Return</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Image Showcase -->
+          <div class="relative">
+            <div class="w-full h-80 sm:h-96 lg:h-[450px] rounded-2xl overflow-hidden shadow-2xl border-4 border-slate-800 relative group">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1000&auto=format&fit=crop&q=80" alt="GUL LLC Luxury Living" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-6 left-6 right-6">
+                <span class="px-2.5 py-1 bg-amber-500 text-slate-950 font-extrabold text-[10px] uppercase rounded">Sale Up To 50%</span>
+                <h3 class="text-lg sm:text-xl font-bold text-white mt-2">Grab The Deals with GUL LLC</h3>
+                <p class="text-xs text-slate-300 mt-1">High-end Italian leather sectionals and tempered glass coffee table suites.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TRUST PILLARS BAR -->
+      <div class="bg-white border-b border-slate-200 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fas fa-truck-fast"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Free US Shipping</h4>
+                <p class="text-[11px] text-slate-500">On all orders over $50</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fas fa-shield-check"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide">30-Day Guarantee</h4>
+                <p class="text-[11px] text-slate-500">Easy returns & full refund</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fas fa-money-check-dollar"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide">Flexible Payments</h4>
+                <p class="text-[11px] text-slate-500">COD &bull; ACH &bull; PayPal &bull; 2CO</p>
+              </div>
+            </div>
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-600 flex items-center justify-center text-xl flex-shrink-0">
+                <i class="fas fa-headset"></i>
+              </div>
+              <div>
+                <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wide">US Support Team</h4>
+                <p class="text-[11px] text-slate-500">Mon-Fri 9AM-6PM EST</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CATEGORY TILES (Matching rmventures: Home & Living, Organizers, Lighting, Table Decor, Fragrance) -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Explore Collections</span>
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif mt-1">Featured Categories</h2>
+          <p class="text-xs text-slate-500 mt-1">Carefully designed and curated to inspire every corner of your home.</p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+          <!-- Category 1 -->
+          <div onclick="App.setCategory('home-living'); App.navigateTo('shop')" class="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
+            <div class="h-44 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=500&auto=format&fit=crop&q=80" alt="Home and Living" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+              <span class="text-xs font-bold group-hover:text-amber-400 transition">Home & Living</span>
+              <span class="text-[10px] text-slate-300">Sofas & Tables</span>
+            </div>
+          </div>
+
+          <!-- Category 2 -->
+          <div onclick="App.setCategory('home-decor'); App.navigateTo('shop')" class="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
+            <div class="h-44 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500&auto=format&fit=crop&q=80" alt="Home Decor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+              <span class="text-xs font-bold group-hover:text-amber-400 transition">Home Decor</span>
+              <span class="text-[10px] text-slate-300">Rugs, Mats & Table</span>
+            </div>
+          </div>
+
+          <!-- Category 3 -->
+          <div onclick="App.setCategory('lighting'); App.navigateTo('shop')" class="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
+            <div class="h-44 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=500&auto=format&fit=crop&q=80" alt="Lighting" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+              <span class="text-xs font-bold group-hover:text-amber-400 transition">Lighting</span>
+              <span class="text-[10px] text-slate-300">Lamps & Chandeliers</span>
+            </div>
+          </div>
+
+          <!-- Category 4 -->
+          <div onclick="App.setCategory('organizers'); App.navigateTo('shop')" class="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition">
+            <div class="h-44 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=500&auto=format&fit=crop&q=80" alt="Organizers" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+              <span class="text-xs font-bold group-hover:text-amber-400 transition">Organizers</span>
+              <span class="text-[10px] text-slate-300">Shoe Boxes & Bins</span>
+            </div>
+          </div>
+
+          <!-- Category 5 -->
+          <div onclick="App.setCategory('home-fragrance'); App.navigateTo('shop')" class="group relative rounded-xl overflow-hidden cursor-pointer shadow-sm hover:shadow-md transition col-span-2 md:col-span-1">
+            <div class="h-44 bg-slate-900">
+              <img src="https://images.unsplash.com/photo-1602928321679-560bb453f190?w=500&auto=format&fit=crop&q=80" alt="Home Fragrance" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 opacity-80 group-hover:opacity-100">
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-slate-950/20 to-transparent flex flex-col justify-end p-3.5 text-white">
+              <span class="text-xs font-bold group-hover:text-amber-400 transition">Home Fragrance</span>
+              <span class="text-[10px] text-slate-300">Diffusers & Incense</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOP COLLECTIONS / PRODUCTS TABS -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-widest text-amber-600">Top Collections</span>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Curated for Excellence</h2>
+          </div>
+          <!-- Category Tabs -->
+          <div class="flex flex-wrap gap-2">
+            <button onclick="App.setCategory('all')" class="category-tab active px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="all">All Items</button>
+            <button onclick="App.setCategory('home-living')" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="home-living">Home & Living</button>
+            <button onclick="App.setCategory('home-decor')" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="home-decor">Home Decor</button>
+            <button onclick="App.setCategory('lighting')" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="lighting">Lighting</button>
+            <button onclick="App.setCategory('organizers')" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="organizers">Organizers</button>
+            <button onclick="App.setCategory('home-fragrance')" class="category-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-100 hover:bg-slate-200 transition" data-category="home-fragrance">Fragrances</button>
+          </div>
+        </div>
+
+        <!-- Products Grid (Home) -->
+        <div id="homeProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Dynamic cards injected via app.js -->
+        </div>
+
+        <div class="text-center mt-12">
+          <a href="#shop" onclick="App.navigateTo('shop')" class="inline-flex items-center px-8 py-3.5 bg-slate-900 hover:bg-amber-600 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200 shadow-md">
+            <span>Explore All 30+ Products</span>
+            <i class="fas fa-arrow-right ml-2 text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- EDITORIAL SHOWCASE (Matching rmventures: Essentials for Home and Living) -->
+      <div class="bg-white py-16 border-y border-slate-200 my-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-4">
+              <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Essentials For Home and Living</span>
+              <h2 class="text-3xl font-extrabold text-slate-900 font-serif leading-tight">
+                Where Quality Meets Creativity & Every Corner Deserves Beauty
+              </h2>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                Discover stylish, functional home and living essentials that enhance comfort, elevate décor, and bring warmth to every space you cherish. From durable mid-century sideboards to backflow aromatherapy burners, GUL LLC crafts products built to last.
+              </p>
+              <div class="pt-2 flex items-center space-x-6 text-xs text-slate-700">
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-cube text-amber-600"></i>
+                  <span>Solid Kiln-Dried Woods</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-gem text-amber-600"></i>
+                  <span>Italian Leather</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <i class="fas fa-certificate text-amber-600"></i>
+                  <span>UL-Certified LEDs</span>
+                </div>
+              </div>
+              <div class="pt-4">
+                <button onclick="App.setCategory('home-living'); App.navigateTo('shop')" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white rounded-lg text-xs font-bold transition">
+                  Shop Living Room Essentials
+                </button>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?w=600&auto=format&fit=crop&q=80" alt="Sideboard" class="w-full h-64 object-cover rounded-xl shadow-md">
+              <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986b88?w=600&auto=format&fit=crop&q=80" alt="Glass Table" class="w-full h-64 object-cover rounded-xl shadow-md mt-6">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WALMART MARKETPLACE COMPLIANCE BADGE SECTION -->
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div class="walmart-seal rounded-2xl p-8 sm:p-10 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center md:text-left">
+            <div class="inline-flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full text-xs font-bold text-white">
+              <i class="fas fa-check-double"></i>
+              <span>Walmart Marketplace Ready Storefront</span>
+            </div>
+            <h3 class="text-2xl font-bold text-white font-serif">Verified Merchant: GUL LLC (Delaware, USA)</h3>
+            <p class="text-xs text-blue-100 max-w-2xl leading-relaxed">
+              Fully compliant commercial infrastructure featuring standardized US domestic delivery (UPS & FedEx), 30-day return policy, verified payment channels (COD, ACH Bank Transfer, PayPal, 2Checkout), and real-time shipment milestone tracking.
+            </p>
+          </div>
+          <div class="flex-shrink-0">
+            <button onclick="App.navigateTo('shop')" class="px-6 py-3.5 bg-white text-slate-900 hover:bg-amber-50 font-bold text-xs rounded-xl shadow-md transition flex items-center">
+              <i class="fas fa-shopping-bag mr-2 text-amber-600"></i>
+              <span>Explore Verified Catalog</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- VIEW 2: SHOP CATALOGUE -->
+    <section id="view-shop" class="view-section hidden py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Breadcrumb & Title -->
+        <div class="mb-8 border-b border-slate-200 pb-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="text-xs text-slate-400 mb-1">
+              <a href="#home" onclick="App.navigateTo('home')" class="hover:text-amber-600">Home</a> &bull; <span class="text-slate-700 font-semibold">Shop Catalogue</span>
+            </div>
+            <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif">Store Catalog</h1>
+          </div>
+
+          <!-- Sort and Counts -->
+          <div class="flex items-center space-x-4">
+            <span id="shopProductsCount" class="text-xs text-slate-500 font-medium">Showing 30+ items</span>
+            <select id="sortSelect" onchange="App.setSort(this.value)" class="text-xs bg-white border border-slate-300 rounded-lg px-3 py-2 text-slate-700 focus:outline-none focus:border-amber-600">
+              <option value="featured">Sort by: Featured</option>
+              <option value="price-low">Price: Low to High</option>
+              <option value="price-high">Price: High to Low</option>
+              <option value="rating">Customer Rating</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          <!-- Sidebar Filters -->
+          <div class="space-y-6">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-900 mb-4 pb-2 border-b border-slate-100">Product Categories</h4>
+              <div class="categories-list-container space-y-1">
+                <!-- Categories injected dynamically -->
+              </div>
+            </div>
+
+            <!-- Trust Card -->
+            <div class="bg-amber-50 p-5 rounded-xl border border-amber-200 text-xs text-amber-900">
+              <div class="flex items-center space-x-2 font-bold mb-2">
+                <i class="fas fa-shield-alt text-amber-600 text-base"></i>
+                <span>GUL LLC Guarantee</span>
+              </div>
+              <p class="text-[11px] text-amber-800 leading-relaxed">
+                All items in our catalog are physically inspected in our US distribution center before dispatch. Backed by 30-day returns.
+              </p>
+            </div>
+          </div>
+
+          <!-- Product Grid -->
+          <div class="lg:col-span-3">
+            <div id="shopProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+              <!-- Dynamically populated from products.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: CHECKOUT PAGE -->
+    <section id="view-checkout" class="view-section hidden py-10">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="mb-6">
+          <a href="#shop" onclick="App.navigateTo('shop')" class="text-xs text-amber-600 font-bold hover:underline">
+            <i class="fas fa-arrow-left mr-1"></i> Return to Shopping
+          </a>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif mt-2">Secure Checkout</h1>
+          <p class="text-xs text-slate-500">256-Bit SSL Encrypted &bull; Direct Carrier Tracking &bull; GUL LLC</p>
+        </div>
+
+        <form id="checkoutForm" class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+          
+          <!-- Left Column: Shipping & Payment Details -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Step 1: Customer & US Shipping Address -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 flex items-center">
+                <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs flex items-center justify-center mr-2">1</span>
+                Customer & Shipping Address (US)
+              </h3>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">First Name *</label>
+                  <input type="text" id="custFirstName" required value="David" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Last Name *</label>
+                  <input type="text" id="custLastName" required value="Miller" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block font-semibold text-slate-700 mb-1">Email Address * (For Tracking & Invoice)</label>
+                  <input type="email" id="custEmail" required value="david.miller@example.com" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block font-semibold text-slate-700 mb-1">Phone Number * (For Carrier Delivery Notifications)</label>
+                  <input type="tel" id="custPhone" required value="+1 (215) 555-0199" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div class="sm:col-span-2">
+                  <label class="block font-semibold text-slate-700 mb-1">Street Address *</label>
+                  <input type="text" id="custAddress" required value="4503 Nehemiah Way" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Apt, Suite, Unit (Optional)</label>
+                  <input type="text" id="custApt" value="Suite 2B" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">City *</label>
+                  <input type="text" id="custCity" required value="Philadelphia" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">State / Region *</label>
+                  <input type="text" id="custState" required value="PA" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">ZIP / Postal Code *</label>
+                  <input type="text" id="custZip" required value="19139" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: Payment Method Selection -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
+              <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 flex items-center">
+                <span class="w-6 h-6 rounded-full bg-slate-900 text-white text-xs flex items-center justify-center mr-2">2</span>
+                Select Payment Method
+              </h3>
+
+              <!-- Payment Method Tabs -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6">
+                <!-- Option 1: COD -->
+                <div class="payment-card-option selected p-3 text-center" data-method="cod">
+                  <i class="fas fa-hand-holding-dollar text-xl text-amber-600 mb-1"></i>
+                  <p class="text-xs font-bold text-slate-800">Cash on Delivery</p>
+                  <span class="text-[10px] text-slate-500">Pay on arrival</span>
+                </div>
+
+                <!-- Option 2: ACH Direct Debit -->
+                <div class="payment-card-option p-3 text-center" data-method="ach">
+                  <i class="fas fa-university text-xl text-emerald-600 mb-1"></i>
+                  <p class="text-xs font-bold text-slate-800">ACH Direct Debit</p>
+                  <span class="text-[10px] text-emerald-600 font-semibold">US Bank Transfer</span>
+                </div>
+
+                <!-- Option 3: PayPal -->
+                <div class="payment-card-option p-3 text-center" data-method="paypal">
+                  <i class="fab fa-paypal text-xl text-blue-600 mb-1"></i>
+                  <p class="text-xs font-bold text-slate-800">PayPal</p>
+                  <span class="text-[10px] text-slate-500">Express Checkout</span>
+                </div>
+
+                <!-- Option 4: 2Checkout / Card -->
+                <div class="payment-card-option p-3 text-center" data-method="2checkout">
+                  <i class="fas fa-credit-card text-xl text-indigo-600 mb-1"></i>
+                  <p class="text-xs font-bold text-slate-800">2Checkout</p>
+                  <span class="text-[10px] text-slate-500">Cards & Debit</span>
+                </div>
+              </div>
+
+              <!-- Payment Method Content Panels -->
+              
+              <!-- 1. COD Panel -->
+              <div id="payment-content-cod" class="payment-method-content p-4 bg-amber-50 rounded-xl border border-amber-200 text-xs">
+                <div class="flex items-start space-x-3">
+                  <i class="fas fa-info-circle text-amber-600 text-lg mt-0.5"></i>
+                  <div>
+                    <h5 class="font-bold text-amber-900 text-sm">Cash on Delivery (COD) Selected</h5>
+                    <p class="text-amber-800 mt-1 leading-relaxed">
+                      You will pay the carrier upon delivery in the United States. No advance payment required. Order begins warehouse inspection immediately.
+                    </p>
+                    <div class="mt-2 text-[11px] text-amber-700 flex items-center space-x-2">
+                      <span class="bg-amber-100 px-2 py-0.5 rounded font-mono font-bold">Zero Surcharge</span>
+                      <span>&bull; Exact cash or card accepted by courier</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 2. ACH Direct Debit Panel (The key requested feature!) -->
+              <div id="payment-content-ach" class="payment-method-content hidden space-y-4 p-4 bg-emerald-50/60 rounded-xl border border-emerald-200 text-xs">
+                <div class="flex items-center justify-between pb-2 border-b border-emerald-200">
+                  <div class="flex items-center space-x-2">
+                    <i class="fas fa-university text-emerald-700 text-base"></i>
+                    <h5 class="font-bold text-emerald-950 text-sm">US ACH Direct Debit (FedACH Verified)</h5>
+                  </div>
+                  <span class="px-2 py-0.5 bg-emerald-100 text-emerald-800 font-bold rounded text-[10px]">NACHA Compliant</span>
+                </div>
+
+                <p class="text-slate-600 text-[11px]">
+                  Direct electronic debit through the US Automated Clearing House network. Funds clear directly to <strong class="text-slate-900">GUL LLC</strong>'s commercial account.
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">9-Digit US Routing Number *</label>
+                    <input type="text" id="achRoutingNumber" placeholder="e.g. 021000021" maxlength="9" value="021000021" class="w-full p-2 bg-white border border-slate-300 rounded font-mono text-xs focus:outline-none focus:border-emerald-600">
+                    <div id="achDetectedBank">
+                      <div class="mt-1 flex items-center text-xs font-semibold text-emerald-700 bg-white p-1.5 rounded border border-emerald-200">
+                        <i class="fas fa-check-circle mr-1 text-emerald-500"></i>
+                        <span>JPMorgan Chase Bank, N.A. &bull; Active FedACH</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Bank Account Number *</label>
+                    <input type="password" id="achAccountNumber" placeholder="Account Number" value="1289481902" class="w-full p-2 bg-white border border-slate-300 rounded font-mono text-xs focus:outline-none focus:border-emerald-600">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Account Holder Full Name *</label>
+                    <input type="text" id="achAccountHolder" placeholder="Account Holder" value="David Miller" class="w-full p-2 bg-white border border-slate-300 rounded text-xs focus:outline-none focus:border-emerald-600">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Account Type *</label>
+                    <select id="achAccountType" class="w-full p-2 bg-white border border-slate-300 rounded text-xs focus:outline-none focus:border-emerald-600">
+                      <option value="Checking">Checking Account</option>
+                      <option value="Savings">Savings Account</option>
+                      <option value="Business Checking">Business Checking</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- NACHA Authorization Notice -->
+                <div class="pt-2">
+                  <label class="flex items-start space-x-2 cursor-pointer">
+                    <input type="checkbox" id="achAuthorizeCheck" checked class="mt-0.5 rounded text-emerald-600 focus:ring-0">
+                    <span class="text-[10px] text-slate-600 leading-tight">
+                      By checking this box, I authorize <strong>GUL LLC</strong> to electronically debit my designated US financial account for the amount specified on this order under NACHA operating rules.
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 3. PayPal Panel -->
+              <div id="payment-content-paypal" class="payment-method-content hidden p-4 bg-blue-50/60 rounded-xl border border-blue-200 text-xs text-center space-y-3">
+                <i class="fab fa-paypal text-3xl text-blue-600"></i>
+                <h5 class="font-bold text-slate-900 text-sm">PayPal Express & Pay in 4</h5>
+                <p class="text-slate-600 text-xs max-w-md mx-auto">
+                  Click below to proceed with PayPal. You will have the option to pay in full or in 4 interest-free installments.
+                </p>
+                <div class="max-w-xs mx-auto pt-2">
+                  <div class="bg-amber-400 hover:bg-amber-500 text-slate-950 font-bold py-2.5 px-4 rounded-full text-xs shadow flex items-center justify-center space-x-2 cursor-pointer">
+                    <i class="fab fa-paypal text-base text-blue-900"></i>
+                    <span>Pay with <strong class="font-serif">PayPal</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 4. 2Checkout / Card Panel -->
+              <div id="payment-content-2checkout" class="payment-method-content hidden p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3 text-xs">
+                <div class="flex items-center justify-between pb-2 border-b border-slate-200">
+                  <span class="font-bold text-slate-900">2Checkout Merchant Gateway</span>
+                  <div class="flex space-x-1.5 text-base text-slate-500">
+                    <i class="fab fa-cc-visa text-blue-700"></i>
+                    <i class="fab fa-cc-mastercard text-red-600"></i>
+                    <i class="fab fa-cc-amex text-blue-500"></i>
+                    <i class="fab fa-cc-discover text-orange-500"></i>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div class="sm:col-span-2">
+                    <label class="block font-semibold text-slate-700 mb-1">Card Number *</label>
+                    <div class="relative">
+                      <input type="text" id="ccNumber" placeholder="4532 •••• •••• 8912" maxlength="19" value="4532 8901 2345 8912" class="w-full p-2 pl-9 bg-white border border-slate-300 rounded font-mono text-xs focus:outline-none focus:border-amber-600">
+                      <i class="far fa-credit-card absolute left-3 top-2.5 text-slate-400 text-xs"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">Expiry Date (MM/YY) *</label>
+                    <input type="text" id="ccExpiry" placeholder="MM/YY" maxlength="5" value="12/28" class="w-full p-2 bg-white border border-slate-300 rounded font-mono text-xs text-center focus:outline-none focus:border-amber-600">
+                  </div>
+                  <div>
+                    <label class="block font-semibold text-slate-700 mb-1">CVC / Security Code *</label>
+                    <input type="password" id="ccCvc" placeholder="CVC" maxlength="4" value="842" class="w-full p-2 bg-white border border-slate-300 rounded font-mono text-xs text-center focus:outline-none focus:border-amber-600">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Right Column: Order Summary Sidebar -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm sticky top-28">
+              <div class="flex items-center justify-between pb-4 border-b border-slate-100">
+                <h3 class="text-sm font-bold text-slate-900 uppercase tracking-wider">Order Summary</h3>
+                <span class="text-xs bg-slate-100 text-slate-700 px-2 py-0.5 rounded-full font-bold">
+                  <span id="checkoutItemsCount">0</span> items
+                </span>
+              </div>
+
+              <!-- Items List -->
+              <div id="checkoutItemsContainer" class="py-2 max-h-64 overflow-y-auto">
+                <!-- Injected via checkout.js -->
+              </div>
+
+              <!-- Coupon Code -->
+              <div class="pt-4 pb-2 border-t border-slate-100">
+                <div class="flex space-x-2">
+                  <input type="text" id="couponCodeInput" placeholder="Promo code (e.g. WELCOME25)" class="flex-1 p-2 bg-slate-50 border border-slate-300 rounded-lg text-xs uppercase font-mono">
+                  <button type="button" id="applyCouponBtn" class="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs rounded-lg transition">
+                    Apply
+                  </button>
+                </div>
+                <div id="couponMessage" class="mt-1"></div>
+              </div>
+
+              <!-- Pricing Calculation -->
+              <div class="py-4 border-t border-slate-100 space-y-2 text-xs">
+                <div class="flex justify-between text-slate-600">
+                  <span>Subtotal:</span>
+                  <span id="checkoutSubtotal" class="font-bold text-slate-900">$0.00</span>
+                </div>
+                <div id="checkoutDiscountRow" class="flex justify-between text-emerald-600 hidden">
+                  <span>Coupon Discount (20%):</span>
+                  <span id="checkoutDiscount" class="font-bold">-$0.00</span>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                  <span>US Carrier Shipping:</span>
+                  <span id="checkoutShipping" class="font-bold text-slate-900">FREE</span>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                  <span>Estimated Sales Tax (6%):</span>
+                  <span id="checkoutTax" class="font-bold text-slate-900">$0.00</span>
+                </div>
+                <div class="flex justify-between text-base font-extrabold text-slate-900 pt-3 border-t border-slate-200">
+                  <span>Total Due:</span>
+                  <span id="checkoutTotal" class="text-amber-600 text-lg">$0.00</span>
+                </div>
+              </div>
+
+              <!-- Place Order Button -->
+              <button type="submit" id="placeOrderBtn" class="w-full mt-2 py-4 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200 shadow-lg shadow-amber-900/20 flex items-center justify-center space-x-2">
+                <i class="fas fa-lock text-xs"></i>
+                <span>Complete Order Securely</span>
+              </button>
+
+              <div class="mt-4 text-[11px] text-slate-500 text-center space-y-1">
+                <p><i class="fas fa-shield-alt text-emerald-600 mr-1"></i> Verified by Walmart Marketplace Standards</p>
+                <p>Authorized merchant: <strong>GUL LLC</strong>, Delaware, USA</p>
+              </div>
+            </div>
+
+          </div>
+
+        </form>
+
+      </div>
+    </section>
+
+    <!-- VIEW 4: TRACK ORDER -->
+    <section id="view-track-order" class="view-section hidden py-12">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-8">
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Real-time Logistics</span>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif mt-1">Track Your Order</h1>
+          <p class="text-xs text-slate-500 mt-2">Enter your Order ID (e.g. GUL-948102) or customer email address to inspect carrier status.</p>
+        </div>
+
+        <div class="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <form id="orderTrackForm" class="flex flex-col sm:flex-row gap-3">
+            <div class="relative flex-1">
+              <input type="text" id="trackOrderInput" placeholder="Enter Order ID (e.g. GUL-948102) or Email" value="GUL-948102" required class="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-300 rounded-xl text-xs focus:outline-none focus:border-amber-600">
+              <i class="fas fa-barcode absolute left-3.5 top-3.5 text-slate-400 text-sm"></i>
+            </div>
+            <button type="submit" class="px-6 py-3 bg-slate-900 hover:bg-amber-600 text-white font-bold text-xs rounded-xl transition duration-200 flex items-center justify-center space-x-2">
+              <i class="fas fa-search"></i>
+              <span>Track Now</span>
+            </button>
+          </form>
+
+          <div id="trackOrderResult" class="mt-6">
+            <!-- Tracking result rendered here -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: ABOUT US (Walmart Compliance) -->
+    <section id="view-about" class="view-section hidden py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+        <div class="text-center max-w-3xl mx-auto">
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">About Our Company</span>
+          <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-serif mt-1">Welcome to GUL LLC</h1>
+          <p class="text-sm text-slate-600 mt-3 leading-relaxed">
+            Registered in Delaware, United States, GUL LLC is a recognized online merchant specializing in luxury home furnishings, modern interior lighting, smart storage organizers, and relaxing lifestyle aromatics.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+          <div class="space-y-4 text-xs text-slate-600 leading-relaxed">
+            <h3 class="text-lg font-bold text-slate-900 font-serif">Our Mission & Standards</h3>
+            <p>
+              At GUL LLC, we believe premium living should not come with unattainable price tags. By cultivating direct relationships with certified artisans and quality manufacturers, we bridge the gap between European design aesthetics and American budget realities.
+            </p>
+            <p>
+              Every unit dispatched undergoes thorough physical quality inspection at our domestic fulfillment facility in Wilmington, Delaware, ensuring our customers receive flawless products on time, every time.
+            </p>
+            <div class="pt-2 grid grid-cols-2 gap-4">
+              <div class="p-3 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <span class="block text-xl font-extrabold text-amber-600">10,000+</span>
+                <span class="text-[11px] text-slate-500">Satisfied US Customers</span>
+              </div>
+              <div class="p-3 bg-white rounded-lg border border-slate-200 shadow-sm">
+                <span class="block text-xl font-extrabold text-amber-600">3-5 Days</span>
+                <span class="text-[11px] text-slate-500">Fast Nationwide Delivery</span>
+              </div>
+            </div>
+          </div>
+          <div class="rounded-2xl overflow-hidden shadow-lg border border-slate-200 h-80">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&auto=format&fit=crop&q=80" alt="GUL LLC Workspace" class="w-full h-full object-cover">
+          </div>
+        </div>
+
+        <!-- Corporate Info Box -->
+        <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm">
+          <h4 class="text-sm font-bold uppercase tracking-wider text-slate-900 mb-4 pb-2 border-b border-slate-100">Corporate Identity & Verification</h4>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs text-slate-600">
+            <div>
+              <span class="font-bold text-slate-900 block">Legal Entity Name:</span>
+              <p>GUL LLC</p>
+              <span class="font-bold text-slate-900 block mt-3">Jurisdiction:</span>
+              <p>Delaware, United States</p>
+            </div>
+            <div>
+              <span class="font-bold text-slate-900 block">Registered Office:</span>
+              <p>1209 North Orange Street, Suite 400<br>Wilmington, DE 19801, USA</p>
+            </div>
+            <div>
+              <span class="font-bold text-slate-900 block">Customer Service:</span>
+              <p><i class="fas fa-phone mr-1 text-amber-600"></i> +1 (302) 415-3882</p>
+              <p><i class="fas fa-envelope mr-1 text-amber-600"></i> support@gulllc.com</p>
+              <p class="mt-1 text-[11px] text-slate-400">Mon - Fri: 9:00 AM - 6:00 PM EST</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: CONTACT US -->
+    <section id="view-contact" class="view-section hidden py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-xl mx-auto mb-10">
+          <span class="text-xs font-bold text-amber-600 uppercase tracking-widest">Get In Touch</span>
+          <h1 class="text-3xl font-extrabold text-slate-900 font-serif mt-1">Contact GUL LLC</h1>
+          <p class="text-xs text-slate-500 mt-2">Have a question regarding orders, shipments, or bulk wholesale? We are here to help.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <div class="space-y-4">
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start space-x-3 text-xs">
+              <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-sm flex-shrink-0">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h5 class="font-bold text-slate-900">Headquarters Address</h5>
+                <p class="text-slate-500 mt-0.5">1209 North Orange Street, Suite 400<br>Wilmington, DE 19801, USA</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start space-x-3 text-xs">
+              <div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-sm flex-shrink-0">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div>
+                <h5 class="font-bold text-slate-900">Phone Support</h5>
+                <p class="text-slate-500 mt-0.5">+1 (302) 415-3882</p>
+                <span class="text-[10px] text-slate-400">Toll-Free Mon-Fri 9am-6pm EST</span>
+              </div>
+            </div>
+
+            <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-sm flex items-start space-x-3 text-xs">
+              <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-sm flex-shrink-0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h5 class="font-bold text-slate-900">Email Inquiries</h5>
+                <p class="text-slate-500 mt-0.5">support@gulllc.com</p>
+                <span class="text-[10px] text-slate-400">Response guaranteed in 24 hours</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-2 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm">
+            <h4 class="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4">Send Us a Direct Message</h4>
+            <form id="contactUsForm" class="space-y-4 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Your Full Name *</label>
+                  <input type="text" required class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+                <div>
+                  <label class="block font-semibold text-slate-700 mb-1">Email Address *</label>
+                  <input type="email" required class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+                </div>
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Subject</label>
+                <input type="text" placeholder="Order status, product specification, etc." class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600">
+              </div>
+              <div>
+                <label class="block font-semibold text-slate-700 mb-1">Message *</label>
+                <textarea rows="4" required placeholder="How can our customer support team assist you today?" class="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:outline-none focus:border-amber-600"></textarea>
+              </div>
+              <button type="submit" class="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs rounded-xl transition duration-200 shadow">
+                Submit Inquiry
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 7: RETURN & REFUND POLICY (Walmart Compliance) -->
+    <section id="view-returns" class="view-section hidden py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-xs leading-relaxed space-y-4">
+        <h1 class="text-2xl font-extrabold text-slate-900 font-serif pb-4 border-b border-slate-100">30-Day Refund and Returns Policy</h1>
+        <p class="text-slate-500">Effective Date: January 1, 2026 | Governing Entity: <strong>GUL LLC</strong></p>
+        
+        <h3 class="text-sm font-bold text-slate-800 pt-2">1. 30-Day Return Window</h3>
+        <p class="text-slate-600">
+          At GUL LLC, our customer satisfaction is paramount. You are entitled to request a return within <strong>30 calendar days</strong> of receiving your shipment.
+        </p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">2. Eligibility & Product Condition</h3>
+        <p class="text-slate-600">
+          To qualify for a full refund, items must be in their original unused condition, including all original packaging, hardware accessories, instruction manuals, and proof of purchase.
+        </p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">3. Pre-Paid Return Labels</h3>
+        <p class="text-slate-600">
+          If your item arrived damaged, defective, or incorrect, GUL LLC will provide a complimentary prepaid FedEx/UPS return label. For buyer remorse or voluntary exchanges, return postage may be deducted from the final refund.
+        </p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">4. Refund Processing Time</h3>
+        <p class="text-slate-600">
+          Once received at our Delaware fulfillment hub, inspection takes 1-2 business days. Approved refunds are credited back to your original payment method (ACH, PayPal, or 2Checkout Card) within 3-5 business days.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIEW 8: SHIPPING POLICY (Walmart Compliance) -->
+    <section id="view-shipping" class="view-section hidden py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-xs leading-relaxed space-y-4">
+        <h1 class="text-2xl font-extrabold text-slate-900 font-serif pb-4 border-b border-slate-100">Shipping & Delivery Policy</h1>
+        <p class="text-slate-500">Effective Date: January 1, 2026 | GUL LLC Fulfillment Network</p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">1. Domestic US Coverage</h3>
+        <p class="text-slate-600">
+          GUL LLC ships to all 48 contiguous United States. We partner with Tier-1 carriers including <strong>FedEx, UPS, and the United States Postal Service (USPS)</strong>.
+        </p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">2. Processing & Transit Times</h3>
+        <ul class="list-disc pl-5 text-slate-600 space-y-1">
+          <li><strong>Order Processing & Packaging:</strong> 1 - 2 business days (Monday through Friday).</li>
+          <li><strong>Standard Carrier Transit:</strong> 3 - 5 business days nationwide.</li>
+          <li><strong>Expedited Delivery:</strong> 2 business days upon request at checkout.</li>
+        </ul>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">3. Shipping Rates & Free Shipping</h3>
+        <p class="text-slate-600">
+          We provide <strong>FREE Standard Domestic Shipping</strong> on all retail orders exceeding $50.00. For orders under $50.00, a flat carrier fee of $9.99 applies.
+        </p>
+
+        <h3 class="text-sm font-bold text-slate-800 pt-2">4. Live Milestone Tracking</h3>
+        <p class="text-slate-600">
+          Immediately upon dispatch, you will receive an automated tracking code. You can verify real-time package progress directly on our <a href="#track-order" onclick="App.navigateTo('track-order')" class="text-amber-600 font-bold underline">Track Order Portal</a>.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIEW 9: TERMS & CONDITIONS -->
+    <section id="view-terms" class="view-section hidden py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-xs leading-relaxed space-y-4">
+        <h1 class="text-2xl font-extrabold text-slate-900 font-serif pb-4 border-b border-slate-100">Terms and Conditions</h1>
+        <p class="text-slate-500">Governing entity: GUL LLC (Delaware)</p>
+        <p class="text-slate-600">
+          By accessing and purchasing from the GUL LLC storefront, you agree to be bound by these Terms of Service and all applicable federal and state laws of Delaware and the United States. All products sold are compliant with US safety regulations.
+        </p>
+      </div>
+    </section>
+
+    <!-- VIEW 10: PRIVACY POLICY -->
+    <section id="view-privacy" class="view-section hidden py-12">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 bg-white p-8 rounded-2xl border border-slate-200 shadow-sm text-xs leading-relaxed space-y-4">
+        <h1 class="text-2xl font-extrabold text-slate-900 font-serif pb-4 border-b border-slate-100">Privacy Policy</h1>
+        <p class="text-slate-500">GUL LLC Consumer Data Protection</p>
+        <p class="text-slate-600">
+          GUL LLC respects consumer privacy. We do not sell, rent, or trade your personal data. All checkout transactions are encrypted via 256-bit SSL protocols. Bank routing and payment details are processed under PCI-DSS Level 1 compliance and NACHA standards.
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========================================== -->
+  <!-- FOOTER (Matching rmventures & Walmart standards) -->
+  <!-- ========================================== -->
+  <footer class="bg-slate-950 text-slate-300 text-xs border-t border-slate-800 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800">
+        
+        <!-- Column 1: Company Profile -->
+        <div class="space-y-4">
+          <div class="flex items-center space-x-2">
+            <div class="w-8 h-8 rounded-lg bg-amber-600 text-white flex items-center justify-center font-bold">
+              <i class="fas fa-gem text-sm"></i>
+            </div>
+            <span class="text-xl font-bold text-white font-serif">GUL <span class="text-amber-500">LLC</span></span>
+          </div>
+          <p class="text-slate-400 text-xs leading-relaxed">
+            GUL LLC is an American retail destination providing premium home furnishings, ambient lighting, lifestyle fragrances, and kitchen organizers.
+          </p>
+          <div class="pt-2 text-slate-400 space-y-1 text-xs">
+            <p><i class="fas fa-map-marker-alt mr-2 text-amber-500"></i> 1209 North Orange St, Wilmington, DE 19801</p>
+            <p><i class="fas fa-phone mr-2 text-amber-500"></i> +1 (302) 415-3882</p>
+            <p><i class="fas fa-envelope mr-2 text-amber-500"></i> support@gulllc.com</p>
+          </div>
+        </div>
+
+        <!-- Column 2: Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Company Navigation</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#home" onclick="App.navigateTo('home')" class="hover:text-amber-400 transition">Home</a></li>
+            <li><a href="#shop" onclick="App.navigateTo('shop')" class="hover:text-amber-400 transition">Shop All Collections</a></li>
+            <li><a href="#about" onclick="App.navigateTo('about')" class="hover:text-amber-400 transition">About GUL LLC</a></li>
+            <li><a href="#contact" onclick="App.navigateTo('contact')" class="hover:text-amber-400 transition">Contact Us</a></li>
+            <li><a href="#track-order" onclick="App.navigateTo('track-order')" class="hover:text-amber-400 transition">Track Your Order</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3: Legal & Policies -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Our Policies</h4>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#returns" onclick="App.navigateTo('returns')" class="hover:text-amber-400 transition">30-Day Return & Refund Policy</a></li>
+            <li><a href="#shipping" onclick="App.navigateTo('shipping')" class="hover:text-amber-400 transition">Shipping & Delivery Policy</a></li>
+            <li><a href="#terms" onclick="App.navigateTo('terms')" class="hover:text-amber-400 transition">Terms and Conditions</a></li>
+            <li><a href="#privacy" onclick="App.navigateTo('privacy')" class="hover:text-amber-400 transition">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 4: Payment Badges & Walmart Seal -->
+        <div class="space-y-4">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Accepted Payment Gateways</h4>
+          <p class="text-slate-400 text-xs">
+            Secure multi-channel checkout powered by US Federal Reserve ACH, PayPal, 2Checkout, and Cash on Delivery.
+          </p>
+          <div class="flex flex-wrap gap-2 text-2xl text-slate-300">
+            <span class="p-1.5 bg-slate-900 border border-slate-800 rounded text-emerald-400 text-xs font-bold font-mono">FedACH Direct</span>
+            <span class="p-1.5 bg-slate-900 border border-slate-800 rounded text-blue-400 text-xs font-bold font-mono">PayPal</span>
+            <span class="p-1.5 bg-slate-900 border border-slate-800 rounded text-amber-400 text-xs font-bold font-mono">2Checkout</span>
+            <span class="p-1.5 bg-slate-900 border border-slate-800 rounded text-white text-xs font-bold font-mono">COD</span>
+          </div>
+          <div class="p-3 bg-slate-900 border border-slate-800 rounded-xl text-[11px] text-slate-300 flex items-center space-x-2">
+            <i class="fas fa-shield-alt text-amber-500 text-base"></i>
+            <span><strong>Walmart Marketplace:</strong> Authorized Merchant Application Profile</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+        <p>&copy; 2026 GUL LLC. All Rights Reserved. Delaware Registered Entity.</p>
+        <div class="flex space-x-4">
+          <a href="#privacy" onclick="App.navigateTo('privacy')" class="hover:text-slate-300">Privacy</a>
+          <a href="#terms" onclick="App.navigateTo('terms')" class="hover:text-slate-300">Terms</a>
+          <a href="#returns" onclick="App.navigateTo('returns')" class="hover:text-slate-300">Returns</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- SLIDE-OUT CART DRAWER -->
+  <!-- ========================================== -->
+  <div id="cartDrawer" class="cart-drawer fixed inset-0 z-50 invisible opacity-0 flex justify-end">
+    <!-- Backdrop -->
+    <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="CartHandler.closeDrawer()"></div>
+    
+    <!-- Drawer Content -->
+    <div id="cartDrawerContent" class="cart-drawer-content relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col translate-x-full z-10">
+      
+      <!-- Drawer Header -->
+      <div class="p-5 border-b border-slate-100 flex items-center justify-between">
+        <div class="flex items-center space-x-2">
+          <h3 class="text-base font-bold text-slate-900 font-serif">Your Shopping Cart</h3>
+          <span class="cart-count-badge bg-amber-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">0</span>
+        </div>
+        <button onclick="CartHandler.closeDrawer()" class="w-8 h-8 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <!-- Free Shipping Bar -->
+      <div class="px-5 py-3 bg-slate-50 border-b border-slate-100">
+        <div class="flex justify-between items-center text-xs mb-1.5" id="freeShippingText">
+          <span>Add $50 for Free US Shipping</span>
+        </div>
+        <div class="w-full h-2 bg-slate-200 rounded-full overflow-hidden">
+          <div id="freeShippingBar" class="h-full bg-amber-500 rounded-full transition-all duration-300" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Drawer Items List -->
+      <div id="cartDrawerItems" class="flex-1 overflow-y-auto p-5 space-y-3">
+        <!-- Rendered via app.js -->
+      </div>
+
+      <!-- Drawer Footer -->
+      <div class="p-5 border-t border-slate-100 bg-slate-50 space-y-3">
+        <div class="flex justify-between text-xs text-slate-600">
+          <span>Subtotal:</span>
+          <span class="cart-subtotal-val font-bold text-slate-900">$0.00</span>
+        </div>
+        <div class="flex justify-between text-xs text-slate-600">
+          <span>US Carrier Shipping:</span>
+          <span class="text-emerald-600 font-bold">Calculated at Checkout</span>
+        </div>
+        <div class="flex justify-between text-sm font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+          <span>Estimated Total:</span>
+          <span class="cart-subtotal-val text-amber-600">$0.00</span>
+        </div>
+
+        <button onclick="CartHandler.closeDrawer(); App.navigateTo('checkout')" class="w-full py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200 shadow-md flex items-center justify-center space-x-2">
+          <i class="fas fa-lock text-xs"></i>
+          <span>Proceed to Checkout</span>
+        </button>
+        <button onclick="CartHandler.closeDrawer(); App.navigateTo('shop')" class="w-full py-2.5 bg-white hover:bg-slate-100 border border-slate-300 text-slate-700 font-bold text-xs rounded-xl transition">
+          Continue Browsing
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- PRODUCT QUICKVIEW MODAL -->
+  <!-- ========================================== -->
+  <div id="quickviewModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm">
+    <div class="relative w-full max-w-4xl bg-white rounded-2xl shadow-2xl overflow-hidden max-h-[92vh] flex flex-col">
+      <button onclick="App.closeQuickview()" class="absolute top-4 right-4 z-20 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="quickviewModalContent" class="overflow-y-auto">
+        <!-- Rendered via app.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- OFFICIAL ORDER RECEIPT / INVOICE MODAL -->
+  <!-- ========================================== -->
+  <div id="receiptModal" class="modal-backdrop fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm">
+    <div class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+      <button onclick="App.closeReceiptModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700">
+        <i class="fas fa-times text-lg"></i>
+      </button>
+      <div id="receiptModalContent">
+        <!-- Rendered via checkout.js -->
+      </div>
+    </div>
+  </div>
+
+  <!-- FLOATING TOAST NOTIFICATION CONTAINER -->
+  <div id="toastContainer" class="fixed bottom-5 right-5 z-50 space-y-2 max-w-sm pointer-events-none"></div>
+
+  <!-- Scripts -->
+  <script src="js/products.js"></script>
+  <script src="js/checkout.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

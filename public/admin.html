@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GUL LLC – Admin & Merchant Operations Backend</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0f172a; }
+    .tab-btn.active {
+      background-color: #d97706;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col">
+
+  <!-- 1. LOGIN GATE (If not authenticated) -->
+  <div id="loginGate" class="fixed inset-0 z-50 bg-slate-950 flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl p-8 shadow-2xl space-y-6">
+      <div class="text-center">
+        <div class="w-14 h-14 rounded-2xl bg-amber-600 text-white flex items-center justify-center text-2xl mx-auto mb-3 shadow-lg">
+          <i class="fas fa-lock"></i>
+        </div>
+        <h1 class="text-2xl font-bold text-white tracking-tight">GUL LLC Backend</h1>
+        <p class="text-xs text-slate-400 mt-1">Merchant Gateways, ACH & Order Management Portal</p>
+      </div>
+
+      <form id="adminLoginForm" class="space-y-4 text-xs">
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Admin Username</label>
+          <div class="relative">
+            <input type="text" id="loginUsername" required value="admin" class="w-full pl-9 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-500">
+            <i class="fas fa-user absolute left-3 top-3 text-slate-500"></i>
+          </div>
+        </div>
+        <div>
+          <label class="block font-semibold text-slate-300 mb-1">Passcode / Password</label>
+          <div class="relative">
+            <input type="password" id="loginPassword" required value="guladmin2026" class="w-full pl-9 pr-3 py-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-500">
+            <i class="fas fa-key absolute left-3 top-3 text-slate-500"></i>
+          </div>
+          <span class="text-[10px] text-slate-500 mt-1 block">Default: <code>admin</code> / <code>guladmin2026</code></span>
+        </div>
+
+        <div id="loginError" class="text-xs text-red-400 hidden p-2 bg-red-950/50 border border-red-800/50 rounded-lg"></div>
+
+        <button type="submit" class="w-full py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs transition duration-200 shadow-lg shadow-amber-900/40 flex items-center justify-center space-x-2">
+          <i class="fas fa-arrow-right-to-bracket"></i>
+          <span>Secure Sign In</span>
+        </button>
+      </form>
+
+      <div class="pt-4 border-t border-slate-800 text-center text-[11px] text-slate-500">
+        <a href="/" class="text-amber-500 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Back to Public Storefront</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. ADMIN PORTAL HEADER -->
+  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <!-- Brand -->
+        <div class="flex items-center space-x-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-600 flex items-center justify-center text-white font-bold">
+            <i class="fas fa-gem text-sm"></i>
+          </div>
+          <div>
+            <span class="text-base font-bold text-white font-serif tracking-wide">GUL <span class="text-amber-500">LLC</span></span>
+            <span class="ml-2 text-[10px] bg-slate-800 text-amber-400 px-2 py-0.5 rounded font-mono font-bold">MERCHANT BACKEND</span>
+          </div>
+        </div>
+
+        <!-- Right Quick Actions -->
+        <div class="flex items-center space-x-4 text-xs">
+          <a href="/" target="_blank" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700 transition flex items-center">
+            <i class="fas fa-external-link-alt mr-1.5 text-amber-500"></i>
+            <span>View Live Store</span>
+          </a>
+          <button onclick="logoutAdmin()" class="px-3 py-1.5 bg-red-950/60 hover:bg-red-900 text-red-300 rounded-lg border border-red-800/50 transition">
+            <i class="fas fa-sign-out-alt mr-1"></i> Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 3. MAIN DASHBOARD CONTENT -->
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    
+    <!-- Top Notification Bar -->
+    <div class="p-4 bg-slate-900 border border-slate-800 rounded-2xl flex flex-col md:flex-row md:items-center justify-between gap-4">
+      <div>
+        <h2 class="text-lg font-bold text-white">Merchant Operations & Payment Gateway Control</h2>
+        <p class="text-xs text-slate-400 mt-0.5">Yeh portal sirf store owner ke liye hai. Main page se tamam admin links remove kar diye gaye hain.</p>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-950 text-emerald-400 border border-emerald-800">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 mr-1.5 animate-pulse"></span>
+          Storefront Online (Port 3000)
+        </span>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <div class="flex flex-wrap gap-2 border-b border-slate-800 pb-3 text-xs font-semibold">
+      <button onclick="switchTab('payment-gateways')" id="tab-btn-payment-gateways" class="tab-btn active px-4 py-2 rounded-xl transition flex items-center space-x-2">
+        <i class="fas fa-money-check-dollar"></i>
+        <span>Payment & ACH Gateways</span>
+      </button>
+      <button onclick="switchTab('orders')" id="tab-btn-orders" class="tab-btn bg-slate-900 text-slate-400 hover:text-white px-4 py-2 rounded-xl transition flex items-center space-x-2">
+        <i class="fas fa-shopping-cart"></i>
+        <span>Customer Orders (<span id="ordersCountBadge">0</span>)</span>
+      </button>
+      <button onclick="switchTab('company-profile')" id="tab-btn-company-profile" class="tab-btn bg-slate-900 text-slate-400 hover:text-white px-4 py-2 rounded-xl transition flex items-center space-x-2">
+        <i class="fas fa-building"></i>
+        <span>Company Legal Profile</span>
+      </button>
+      <button onclick="switchTab('ach-guide')" id="tab-btn-ach-guide" class="tab-btn bg-slate-900 text-slate-400 hover:text-white px-4 py-2 rounded-xl transition flex items-center space-x-2">
+        <i class="fas fa-graduation-cap"></i>
+        <span>ACH Integration Guide</span>
+      </button>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 1: PAYMENT GATEWAYS & ACH SETTINGS -->
+    <!-- ============================================== -->
+    <div id="tab-content-payment-gateways" class="tab-content space-y-6">
+      
+      <form id="merchantSettingsForm" class="space-y-6">
+        
+        <!-- SECTION 1: ACH DIRECT DEBIT (US Bank Transfer) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-950 text-emerald-400 flex items-center justify-center text-lg">
+                <i class="fas fa-university"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">ACH Direct Debit / US Bank Transfer (FedACH)</h3>
+                <p class="text-xs text-slate-400">Direct electronic debit via Federal Reserve ACH Network for US Customers.</p>
+              </div>
+            </div>
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="checkbox" id="adminToggleAch" checked class="rounded text-emerald-600 focus:ring-0">
+              <span class="text-xs font-semibold text-emerald-400">Active</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Designated US Bank Name</label>
+              <input type="text" id="adminAchBankName" value="JPMorgan Chase Bank, N.A." class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">FedACH 9-Digit Routing Number</label>
+              <input type="text" id="adminAchRouting" value="021000021" maxlength="9" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Beneficiary / Account Holder Name</label>
+              <input type="text" id="adminAchHolder" value="GUL LLC" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Account Type</label>
+              <select id="adminAchType" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white focus:outline-none focus:border-amber-500">
+                <option value="Commercial Checking" selected>Commercial Checking (Business)</option>
+                <option value="Checking">Standard Checking</option>
+              </select>
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Stripe ACH Publishable Key (Optional)</label>
+              <input type="text" id="adminStripeAchPub" placeholder="pk_live_..." class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Stripe ACH Secret Key (Optional)</label>
+              <input type="password" id="adminStripeAchSec" placeholder="sk_live_..." class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 2: PAYPAL EXPRESS -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-blue-950 text-blue-400 flex items-center justify-center text-lg">
+                <i class="fab fa-paypal"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">PayPal Express Checkout & Pay in 4</h3>
+                <p class="text-xs text-slate-400">Accept payments via PayPal balances, cards, or Pay in 4 installments.</p>
+              </div>
+            </div>
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="checkbox" id="adminTogglePaypal" checked class="rounded text-blue-600 focus:ring-0">
+              <span class="text-xs font-semibold text-blue-400">Active</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div class="md:col-span-2">
+              <label class="block font-semibold text-slate-300 mb-1">PayPal Live / Sandbox Client ID</label>
+              <input type="text" id="adminPaypalClientId" value="test_client_id_paypal_gul_llc" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+              <span class="text-[10px] text-slate-500 mt-1 block">Found in PayPal Developer Dashboard &rarr; Apps & Credentials</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 3: 2CHECKOUT / CREDIT CARD -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+          <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+            <div class="flex items-center space-x-3">
+              <div class="w-10 h-10 rounded-xl bg-indigo-950 text-indigo-400 flex items-center justify-center text-lg">
+                <i class="fas fa-credit-card"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-bold text-white">2Checkout / Verifone Gateway</h3>
+                <p class="text-xs text-slate-400">Credit and Debit card processing for Visa, MasterCard, Amex, Discover.</p>
+              </div>
+            </div>
+            <label class="flex items-center space-x-2 cursor-pointer">
+              <input type="checkbox" id="adminToggle2co" checked class="rounded text-amber-600 focus:ring-0">
+              <span class="text-xs font-semibold text-amber-400">Active</span>
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">2Checkout Merchant Code</label>
+              <input type="text" id="admin2coMerchantCode" value="250819402" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">2Checkout Publishable Key</label>
+              <input type="text" id="admin2coPublishableKey" value="pk_2co_demo_live_gulllc" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl font-mono text-white focus:outline-none focus:border-amber-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- SECTION 4: CASH ON DELIVERY (COD) -->
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex items-center justify-between">
+          <div class="flex items-center space-x-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-950 text-amber-400 flex items-center justify-center text-lg">
+              <i class="fas fa-hand-holding-dollar"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Cash on Delivery (COD)</h3>
+              <p class="text-xs text-slate-400">Allow customers to tender cash/certified payment upon order arrival.</p>
+            </div>
+          </div>
+          <label class="flex items-center space-x-2 cursor-pointer">
+            <input type="checkbox" id="adminToggleCod" checked class="rounded text-amber-600 focus:ring-0">
+            <span class="text-xs font-semibold text-amber-400">Active</span>
+          </label>
+        </div>
+
+        <!-- SUBMIT / SAVE BUTTON -->
+        <div class="flex justify-end">
+          <button type="submit" id="saveGatewayBtn" class="px-8 py-3.5 bg-amber-600 hover:bg-amber-700 text-white font-bold text-xs uppercase tracking-wider rounded-xl transition duration-200 shadow-lg shadow-amber-900/30 flex items-center space-x-2">
+            <i class="fas fa-save"></i>
+            <span>Save & Apply Gateway Configuration</span>
+          </button>
+        </div>
+
+      </form>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 2: ORDERS MANAGEMENT -->
+    <!-- ============================================== -->
+    <div id="tab-content-orders" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-4 border-b border-slate-800 gap-3">
+          <div>
+            <h3 class="text-sm font-bold text-white">Customer Orders</h3>
+            <p class="text-xs text-slate-400">Real-time database of orders placed on GUL LLC storefront.</p>
+          </div>
+          <button onclick="loadAdminOrders()" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs rounded-lg text-slate-300">
+            <i class="fas fa-sync-alt mr-1"></i> Refresh Orders
+          </button>
+        </div>
+
+        <!-- Orders Table -->
+        <div class="overflow-x-auto mt-4">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="border-b border-slate-800 text-slate-400 uppercase text-[10px] tracking-wider">
+                <th class="py-3 px-3">Order ID</th>
+                <th class="py-3 px-3">Customer</th>
+                <th class="py-3 px-3">Items</th>
+                <th class="py-3 px-3">Total</th>
+                <th class="py-3 px-3">Payment</th>
+                <th class="py-3 px-3">Status</th>
+                <th class="py-3 px-3">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="adminOrdersTableBody" class="divide-y divide-slate-800 text-slate-300">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 3: COMPANY LEGAL PROFILE -->
+    <!-- ============================================== -->
+    <div id="tab-content-company-profile" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6">
+        <h3 class="text-sm font-bold text-white mb-1">Company Legal Profile (Walmart Marketplace Alignment)</h3>
+        <p class="text-xs text-slate-400 mb-6">These details appear across the website, footer, checkout, and invoices.</p>
+
+        <form id="companyProfileForm" class="space-y-4 text-xs">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Company Legal Name *</label>
+              <input type="text" id="profCompanyName" value="GUL LLC" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">State of Registration</label>
+              <input type="text" value="Delaware, United States" readonly class="w-full p-2.5 bg-slate-800/50 border border-slate-700 text-slate-400 rounded-xl">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Customer Support Phone *</label>
+              <input type="text" id="profPhone" value="+1 (302) 415-3882" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white">
+            </div>
+            <div>
+              <label class="block font-semibold text-slate-300 mb-1">Customer Support Email *</label>
+              <input type="email" id="profEmail" value="support@gulllc.com" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white">
+            </div>
+            <div class="sm:col-span-2">
+              <label class="block font-semibold text-slate-300 mb-1">Registered Address (USA) *</label>
+              <input type="text" id="profAddress" value="1209 North Orange Street, Suite 400, Wilmington, DE 19801" class="w-full p-2.5 bg-slate-800 border border-slate-700 rounded-xl text-white">
+            </div>
+          </div>
+
+          <div class="pt-4 flex justify-end">
+            <button type="submit" class="px-6 py-2.5 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-xl text-xs">
+              Save Company Profile
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- TAB 4: ACH INTEGRATION GUIDE (Urdu & English) -->
+    <!-- ============================================== -->
+    <div id="tab-content-ach-guide" class="tab-content hidden space-y-6">
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 space-y-6 text-xs text-slate-300 leading-relaxed">
+        <div class="flex items-center space-x-3 pb-4 border-b border-slate-800">
+          <div class="w-12 h-12 rounded-xl bg-amber-500/20 text-amber-400 flex items-center justify-center text-xl">
+            <i class="fas fa-university"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-white">ACH Direct Debit Backend Technical Guide</h3>
+            <p class="text-xs text-slate-400">Roman Urdu + English Blueprint for Store Owner</p>
+          </div>
+        </div>
+
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wide">1. ACH Kya Hai Aur Walmart Approve Kyun Karta Hai?</h4>
+          <p>
+            ACH (Automated Clearing House) America ka federal bank transfer network hai. Jab Walmart Marketplace team kisi website ko review karti hai, to wo dekhte hain ke seller ke paas genuine <strong>US Business Presence</strong> hai ya nahi. Website par ACH Direct Debit ka mojood hona Walmart ko proof deta hai ke seller US banking compliance aur NACHA guidelines follow kar raha hai.
+          </p>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <h4 class="text-sm font-bold text-amber-400 uppercase tracking-wide">2. Live Stripe ACH Kese Connect Karein?</h4>
+          <ol class="list-decimal pl-5 space-y-2 text-slate-300">
+            <li><strong>Stripe Account:</strong> Apne GUL LLC US business account se <a href="https://dashboard.stripe.com" target="_blank" class="text-amber-400 underline">Stripe Dashboard</a> me login karein.</li>
+            <li><strong>Payment Methods Enable Karein:</strong> Settings &rarr; Payment Methods me jakar <em>US Bank Account (ACH Direct Debit)</em> ko Enable karein.</li>
+            <li><strong>Plaid Financial Connections:</strong> Plaid ko enable karein taake customer direct Chase, Wells Fargo, Bank of America me login karke pay kare.</li>
+            <li><strong>Keys Yahan Paste Karein:</strong> Stripe Developers se <code>Publishable Key</code> aur <code>Secret Key</code> copy karein aur is Dashboard ke <em>"Payment & ACH Gateways"</em> tab me save kar dein!</li>
+          </ol>
+        </div>
+
+        <div class="p-4 bg-slate-950 border border-slate-800 rounded-xl font-mono text-[11px] text-amber-300">
+          // Backend API Endpoint Ready in server.js<br>
+          POST /api/orders &rarr; Automatically validates 9-digit FedACH Routing Number<br>
+          GET /api/ach/lookup-routing/:routing &rarr; Auto-detects Bank Name (Chase, BoA, Wells Fargo)
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // --- AUTHENTICATION LOGIC ---
+    const loginGate = document.getElementById('loginGate');
+    const loginForm = document.getElementById('adminLoginForm');
+    const loginError = document.getElementById('loginError');
+
+    // Check if already authenticated
+    if (sessionStorage.getItem('GUL_ADMIN_AUTH') === 'true') {
+      loginGate.classList.add('hidden');
+      initAdminDashboard();
+    }
+
+    loginForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const u = document.getElementById('loginUsername').value.trim();
+      const p = document.getElementById('loginPassword').value.trim();
+
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: u, password: p })
+        });
+        const data = await res.json();
+        if (data.success) {
+          sessionStorage.setItem('GUL_ADMIN_AUTH', 'true');
+          loginGate.classList.add('hidden');
+          initAdminDashboard();
+        } else {
+          loginError.textContent = data.message || 'Invalid username or password';
+          loginError.classList.remove('hidden');
+        }
+      } catch (err) {
+        loginError.textContent = 'Server connection error.';
+        loginError.classList.remove('hidden');
+      }
+    });
+
+    function logoutAdmin() {
+      sessionStorage.removeItem('GUL_ADMIN_AUTH');
+      window.location.reload();
+    }
+
+    // --- TAB SWITCHING ---
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('active');
+        btn.className = 'tab-btn bg-slate-900 text-slate-400 hover:text-white px-4 py-2 rounded-xl transition flex items-center space-x-2';
+      });
+      document.getElementById(`tab-btn-${tabId}`).className = 'tab-btn active px-4 py-2 rounded-xl transition flex items-center space-x-2';
+
+      document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+      document.getElementById(`tab-content-${tabId}`).classList.remove('hidden');
+
+      if (tabId === 'orders') {
+        loadAdminOrders();
+      }
+    }
+
+    // --- DASHBOARD INIT ---
+    async function initAdminDashboard() {
+      await loadAdminSettings();
+      await loadAdminOrders();
+      bindAdminForms();
+    }
+
+    // Load Settings
+    async function loadAdminSettings() {
+      try {
+        const res = await fetch('/api/settings');
+        const data = await res.json();
+        if (data.success && data.settings) {
+          const s = data.settings;
+          const pay = s.payment || {};
+          const comp = s.company || {};
+
+          // ACH
+          if (document.getElementById('adminToggleAch')) document.getElementById('adminToggleAch').checked = pay.ach?.enabled ?? true;
+          if (document.getElementById('adminAchBankName')) document.getElementById('adminAchBankName').value = pay.ach?.bankName || '';
+          if (document.getElementById('adminAchRouting')) document.getElementById('adminAchRouting').value = pay.ach?.routingNumber || '';
+          if (document.getElementById('adminAchHolder')) document.getElementById('adminAchHolder').value = pay.ach?.accountHolder || '';
+          if (document.getElementById('adminStripeAchPub')) document.getElementById('adminStripeAchPub').value = pay.ach?.stripePublishableKey || '';
+
+          // PayPal
+          if (document.getElementById('adminTogglePaypal')) document.getElementById('adminTogglePaypal').checked = pay.paypal?.enabled ?? true;
+          if (document.getElementById('adminPaypalClientId')) document.getElementById('adminPaypalClientId').value = pay.paypal?.clientId || '';
+
+          // 2CO
+          if (document.getElementById('adminToggle2co')) document.getElementById('adminToggle2co').checked = pay.twoCheckout?.enabled ?? true;
+          if (document.getElementById('admin2coMerchantCode')) document.getElementById('admin2coMerchantCode').value = pay.twoCheckout?.merchantCode || '';
+          if (document.getElementById('admin2coPublishableKey')) document.getElementById('admin2coPublishableKey').value = pay.twoCheckout?.publishableKey || '';
+
+          // COD
+          if (document.getElementById('adminToggleCod')) document.getElementById('adminToggleCod').checked = pay.cod?.enabled ?? true;
+
+          // Company
+          if (document.getElementById('profCompanyName')) document.getElementById('profCompanyName').value = comp.name || 'GUL LLC';
+          if (document.getElementById('profPhone')) document.getElementById('profPhone').value = comp.phone || '';
+          if (document.getElementById('profEmail')) document.getElementById('profEmail').value = comp.email || '';
+          if (document.getElementById('profAddress')) document.getElementById('profAddress').value = comp.address || '';
+        }
+      } catch (e) {
+        console.error('Error fetching settings:', e);
+      }
+    }
+
+    // Load Orders
+    async function loadAdminOrders() {
+      try {
+        const res = await fetch('/api/admin/orders');
+        const data = await res.json();
+        const tbody = document.getElementById('adminOrdersTableBody');
+        const badge = document.getElementById('ordersCountBadge');
+        if (!tbody) return;
+
+        if (data.success && data.orders) {
+          if (badge) badge.textContent = data.orders.length;
+          tbody.innerHTML = data.orders.map(o => `
+            <tr class="hover:bg-slate-800/50 transition">
+              <td class="py-3 px-3 font-mono font-bold text-white">${o.orderId}</td>
+              <td class="py-3 px-3">
+                <span class="font-semibold text-white block">${o.customer.fullName}</span>
+                <span class="text-[11px] text-slate-500">${o.customer.city}, ${o.customer.state}</span>
+              </td>
+              <td class="py-3 px-3">${o.items.length} items</td>
+              <td class="py-3 px-3 font-bold text-amber-400">$${o.total.toFixed(2)}</td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
+                  o.paymentMethod === 'ach' ? 'bg-emerald-950 text-emerald-400 border border-emerald-800' :
+                  o.paymentMethod === 'paypal' ? 'bg-blue-950 text-blue-400 border border-blue-800' :
+                  o.paymentMethod === '2checkout' ? 'bg-indigo-950 text-indigo-400 border border-indigo-800' :
+                  'bg-amber-950 text-amber-400 border border-amber-800'
+                }">
+                  ${o.paymentMethod.toUpperCase()}
+                </span>
+              </td>
+              <td class="py-3 px-3">
+                <span class="px-2 py-0.5 rounded text-[10px] font-bold ${
+                  o.status === 'Delivered' ? 'bg-emerald-900 text-emerald-300' : 'bg-blue-900 text-blue-300'
+                }">
+                  ${o.status}
+                </span>
+              </td>
+              <td class="py-3 px-3 space-x-2">
+                <button onclick="updateOrderStatusPrompt('${o.orderId}')" class="text-amber-400 hover:text-amber-300 font-semibold text-[11px]">
+                  <i class="fas fa-edit mr-1"></i> Update
+                </button>
+              </td>
+            </tr>
+          `).join('');
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function updateOrderStatusPrompt(orderId) {
+      const newStatus = prompt('Enter new status (e.g. "Processing", "Shipped via FedEx", "Delivered"):', 'Shipped via FedEx');
+      if (!newStatus) return;
+      const note = prompt('Optional timeline note for customer:', 'Dispatched from GUL LLC fulfillment center');
+
+      try {
+        const res = await fetch(`/api/admin/orders/${orderId}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ status: newStatus, note })
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`Order ${orderId} updated to: ${newStatus}`);
+          loadAdminOrders();
+        }
+      } catch (e) {
+        alert('Failed to update order');
+      }
+    }
+
+    // Save Settings
+    function bindAdminForms() {
+      const gatewayForm = document.getElementById('merchantSettingsForm');
+      if (gatewayForm) {
+        gatewayForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const btn = document.getElementById('saveGatewayBtn');
+          const original = btn.innerHTML;
+          btn.innerHTML = `<i class="fas fa-circle-notch fa-spin mr-2"></i> Saving...`;
+
+          const payload = {
+            payment: {
+              ach: {
+                enabled: document.getElementById('adminToggleAch').checked,
+                bankName: document.getElementById('adminAchBankName').value.trim(),
+                routingNumber: document.getElementById('adminAchRouting').value.trim(),
+                accountHolder: document.getElementById('adminAchHolder').value.trim(),
+                stripePublishableKey: document.getElementById('adminStripeAchPub').value.trim(),
+                stripeSecretKey: document.getElementById('adminStripeAchSec').value.trim()
+              },
+              paypal: {
+                enabled: document.getElementById('adminTogglePaypal').checked,
+                clientId: document.getElementById('adminPaypalClientId').value.trim()
+              },
+              twoCheckout: {
+                enabled: document.getElementById('adminToggle2co').checked,
+                merchantCode: document.getElementById('admin2coMerchantCode').value.trim(),
+                publishableKey: document.getElementById('admin2coPublishableKey').value.trim()
+              },
+              cod: {
+                enabled: document.getElementById('adminToggleCod').checked
+              }
+            }
+          };
+
+          try {
+            const res = await fetch('/api/settings', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (data.success) {
+              alert('✅ Payment Gateway & ACH Settings saved successfully!');
+            }
+          } catch (err) {
+            alert('Error saving settings.');
+          } finally {
+            btn.innerHTML = original;
+          }
+        });
+      }
+
+      const compForm = document.getElementById('companyProfileForm');
+      if (compForm) {
+        compForm.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const payload = {
+            company: {
+              name: document.getElementById('profCompanyName').value.trim(),
+              phone: document.getElementById('profPhone').value.trim(),
+              email: document.getElementById('profEmail').value.trim(),
+              address: document.getElementById('profAddress').value.trim()
+            }
+          };
+          try {
+            const res = await fetch('/api/settings', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(payload)
+            });
+            const data = await res.json();
+            if (data.success) {
+              alert('✅ Company legal profile updated!');
+            }
+          } catch (err) {
+            alert('Error updating company profile.');
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

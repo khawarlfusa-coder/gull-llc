@@ -1,0 +1,134 @@
+[
+  {
+    "orderId": "GUL-443430",
+    "createdAt": "2026-09-24T19:11:18.864Z",
+    "customer": {
+      "fullName": "John Doe",
+      "email": "john.doe@example.com",
+      "phone": "+1 302 555 0122",
+      "address": "100 Main St",
+      "city": "Wilmington",
+      "state": "DE",
+      "zip": "19801"
+    },
+    "items": [
+      {
+        "id": "hl-01",
+        "title": "Living Room Set",
+        "price": 602.28,
+        "quantity": 1
+      }
+    ],
+    "subtotal": 602.28,
+    "tax": 36.14,
+    "shipping": 0,
+    "total": 638.42,
+    "paymentMethod": "ach",
+    "paymentDetails": {
+      "bankName": "JPMorgan Chase Bank, N.A.",
+      "routingNumber": "021000021",
+      "accountLast4": "9921",
+      "status": "ACH Direct Debit Scheduled"
+    },
+    "shippingMethod": "FedEx Home Delivery (3-5 Business Days)",
+    "trackingNumber": "FX-982165787110",
+    "status": "Processing",
+    "timeline": [
+      {
+        "status": "Order Placed",
+        "time": "Sep 24, 2026, 12:11 PM",
+        "completed": true,
+        "note": "Automated Clearing House Direct Debit initiated via JPMorgan Chase Bank, N.A. (NACHA Routing verified)"
+      },
+      {
+        "status": "Processing at US Warehouse",
+        "time": "Pending packaging & inspection",
+        "completed": false,
+        "note": "GUL LLC Fulfillment Center - Wilmington DE"
+      },
+      {
+        "status": "Dispatched via Carrier",
+        "time": "Expected within 24-48 hours",
+        "completed": false,
+        "note": "Carrier: FedEx Home Delivery"
+      },
+      {
+        "status": "Delivered",
+        "time": "3-5 Business Days",
+        "completed": false,
+        "note": "Direct signature tracking"
+      }
+    ]
+  },
+  {
+    "orderId": "GUL-948102",
+    "createdAt": "2026-09-22T14:20:00.000Z",
+    "customer": {
+      "fullName": "David Miller",
+      "email": "david.miller@example.com",
+      "phone": "+1 (215) 555-0199",
+      "address": "4503 Nehemiah Way",
+      "city": "Philadelphia",
+      "state": "PA",
+      "zip": "19139",
+      "country": "United States"
+    },
+    "items": [
+      {
+        "id": "hl-01",
+        "title": "Living Room Set – Glass Coffee Table and 2 End Tables with Modern Design Set of 3 (Gold)",
+        "price": 602.28,
+        "quantity": 1,
+        "variant": "Luxe Gold"
+      }
+    ],
+    "subtotal": 602.28,
+    "discount": 0,
+    "shipping": 0,
+    "tax": 36.14,
+    "total": 638.42,
+    "paymentMethod": "ach",
+    "paymentDetails": {
+      "type": "ACH Direct Debit",
+      "bankName": "Bank of America",
+      "routingNumber": "026009593",
+      "accountLast4": "4821",
+      "status": "ACH Debit Cleared (NACHA Verified)"
+    },
+    "shippingMethod": "FedEx Ground Home Delivery (3-5 Days)",
+    "trackingNumber": "FEDEX-782910481920",
+    "status": "In Transit",
+    "timeline": [
+      {
+        "status": "Order Placed",
+        "time": "Sep 22, 2026 - 10:20 AM",
+        "completed": true,
+        "note": "Verified ACH Direct Debit clearance"
+      },
+      {
+        "status": "Warehouse Processing",
+        "time": "Sep 22, 2026 - 02:45 PM",
+        "completed": true,
+        "note": "GUL LLC Logistics Center Wilmington DE"
+      },
+      {
+        "status": "Shipped via FedEx Ground",
+        "time": "Sep 23, 2026 - 08:30 AM",
+        "completed": true,
+        "note": "Tracking # FEDEX-782910481920"
+      },
+      {
+        "status": "Out for Delivery",
+        "time": "Sep 24, 2026 - 07:15 AM",
+        "completed": true,
+        "note": "Philadelphia sorting hub"
+      },
+      {
+        "status": "Delivered",
+        "time": "Estimated Today by 5:00 PM",
+        "completed": false,
+        "note": "Signature required upon delivery"
+      }
+    ]
+  }
+]
