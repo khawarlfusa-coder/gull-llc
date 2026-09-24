@@ -465,7 +465,7 @@ const App = {
           </div>
           <div class="flex items-center space-x-2 text-xs text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <i class="fas fa-shield-alt text-amber-600 text-base"></i>
-            <span><strong>Walmart Verified US Merchant:</strong> Guaranteed authentic product backed by GUL LLC Delaware.</span>
+            <span><strong>Authentic Brand Guarantee:</strong> Guaranteed authentic product backed by GUL LLC Delaware.</span>
           </div>
         </div>
 
@@ -544,7 +544,7 @@ const App = {
             </button>
           </div>
 
-          <!-- Walmart Logistics badge -->
+          <!-- US Domestic Logistics badge -->
           <div class="mt-4 text-[11px] text-slate-500 flex items-center space-x-4">
             <span><i class="fas fa-shipping-fast text-emerald-600 mr-1"></i> Ships in 24h</span>
             <span><i class="fas fa-undo text-blue-600 mr-1"></i> 30-Day Return Policy</span>

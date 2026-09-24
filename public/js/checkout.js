@@ -375,7 +375,7 @@ const CheckoutHandler = {
         <p class="text-sm text-slate-500 mt-1">Thank you for choosing <span class="font-bold text-amber-600">GUL LLC</span>. Your order is registered in our US fulfillment system.</p>
         <div class="mt-3 inline-flex items-center space-x-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full text-xs font-bold text-amber-800">
           <i class="fas fa-shield-alt text-amber-600"></i>
-          <span>Official Walmart Marketplace Approved Merchant: GUL LLC</span>
+          <span>Authorized US Registered Merchant: GUL LLC</span>
         </div>
       </div>
 
