@@ -5,11 +5,11 @@
     "customer": {
       "fullName": "John Doe",
       "email": "john.doe@example.com",
-      "phone": "+1 302 555 0122",
+      "phone": "+1 214 555 0122",
       "address": "100 Main St",
-      "city": "Wilmington",
-      "state": "DE",
-      "zip": "19801"
+      "city": "Dallas",
+      "state": "TX",
+      "zip": "75201"
     },
     "items": [
       {

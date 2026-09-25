@@ -373,6 +373,9 @@ const CheckoutHandler = {
         </div>
         <h3 class="text-2xl font-extrabold text-slate-900">Order Confirmed!</h3>
         <p class="text-sm text-slate-500 mt-1">Thank you for choosing <span class="font-bold text-amber-600">GUL LLC</span>. Your order is registered in our US fulfillment system.</p>
+        <div class="mt-2 text-[11px] text-slate-500 font-medium">
+          <span>18828 Vea Dr, Edmond, OK 73012 &bull; Tel: <a href="tel:+14059208515" class="text-amber-600 hover:underline">+1-405-920-8515</a></span>
+        </div>
         <div class="mt-3 inline-flex items-center space-x-2 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-full text-xs font-bold text-amber-800">
           <i class="fas fa-shield-alt text-amber-600"></i>
           <span>Authorized US Registered Merchant: GUL LLC</span>
