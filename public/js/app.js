@@ -465,7 +465,7 @@ const App = {
           </div>
           <div class="flex items-center space-x-2 text-xs text-slate-500 bg-slate-50 p-2.5 rounded-lg border border-slate-200">
             <i class="fas fa-shield-alt text-amber-600 text-base"></i>
-            <span><strong>Authentic Brand Guarantee:</strong> Guaranteed authentic product backed by GUL LLC Delaware.</span>
+            <span><strong>Authentic Brand Guarantee:</strong> Guaranteed authentic product backed by GUL LLC.</span>
           </div>
         </div>
 

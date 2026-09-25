@@ -2,11 +2,11 @@
   "company": {
     "name": "GUL LLC",
     "tagline": "Quality You Can Trust – Premium Home & Living",
-    "address": "1209 North Orange Street, Suite 400, Wilmington, DE 19801, United States",
-    "phone": "+1 (302) 415-3882",
+    "address": "18828 Vea Dr, Edmond, OK 73012, United States",
+    "phone": "+1-405-920-8515",
     "email": "support@gulllc.com",
     "ein": "Authorized US LLC",
-    "hours": "Mon - Fri: 9:00 AM - 6:00 PM EST | Sat: 10:00 AM - 3:00 PM EST"
+    "hours": "Mon - Fri: 9:00 AM - 6:00 PM CST | Sat: 10:00 AM - 3:00 PM CST"
   },
   "payment": {
     "cod": {

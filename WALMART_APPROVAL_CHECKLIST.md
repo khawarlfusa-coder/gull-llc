@@ -11,11 +11,11 @@ Walmart verifies that the details on your application form match **100% identica
 | Field | Must Match Exactly On: | GUL LLC Default Config |
 |---|---|---|
 | **Legal Business Name** | IRS CP575 / 147C, Bank Statement, Website Header & Footer | **GUL LLC** |
-| **Business Address** | State Filing / Registered Agent / Utility Bill | **1209 North Orange St, Suite 400, Wilmington, DE 19801** |
-| **Phone Number** | Official Business Line (US Number) | **+1 (302) 415-3882** |
+| **Business Address** | State Filing / Registered Agent / Utility Bill | **18828 Vea Dr, Edmond, OK 73012** |
+| **Phone Number** | Official Business Line (US Number) | **+1-405-920-8515** |
 | **Support Email** | Domain-branded email (Avoid `@gmail.com`) | **support@gulllc.com** |
 
-> **Pro Tip:** In the GUL LLC website, you can change the address, phone, and email at any time using the in-app **"Payment & ACH Settings"** button or by editing `data/settings.json`.
+> **Pro Tip:** In the GUL LLC website, you can change the address, phone, and email at any time inside the private **Admin Dashboard (`/admin`)** or by editing `data/settings.json`.
 
 ---
 

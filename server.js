@@ -158,7 +158,7 @@ app.post('/api/orders', (req, res) => {
         status: 'Processing at US Warehouse',
         time: 'Pending packaging & inspection',
         completed: false,
-        note: 'GUL LLC Fulfillment Center - Wilmington DE'
+        note: 'GUL LLC Fulfillment Center - Edmond OK'
       },
       {
         status: 'Dispatched via Carrier',

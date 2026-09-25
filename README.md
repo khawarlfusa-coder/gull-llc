@@ -1,6 +1,6 @@
 # GUL LLC – Official Storefront & Merchant Operations
 
-A high-converting, Walmart Marketplace Seller Approval-ready e-commerce platform built for **GUL LLC** (Delaware, USA). 
+A high-converting, Walmart Marketplace Seller Approval-ready e-commerce platform built for **GUL LLC** (Edmond, OK, USA). 
 
 Replicated from the architecture and product catalog of `rmventures.shop`, featuring over 30+ curated products across 5 home & lifestyle categories, complete with domestic shipping timelines, 30-day return policy, real-time shipment milestone tracking, and multi-channel payment integrations.
 

@@ -44,7 +44,7 @@
         "status": "Processing at US Warehouse",
         "time": "Pending packaging & inspection",
         "completed": false,
-        "note": "GUL LLC Fulfillment Center - Wilmington DE"
+        "note": "GUL LLC Fulfillment Center - Edmond OK"
       },
       {
         "status": "Dispatched via Carrier",
@@ -109,7 +109,7 @@
         "status": "Warehouse Processing",
         "time": "Sep 22, 2026 - 02:45 PM",
         "completed": true,
-        "note": "GUL LLC Logistics Center Wilmington DE"
+        "note": "GUL LLC Logistics Center Edmond OK"
       },
       {
         "status": "Shipped via FedEx Ground",
